@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -12,14 +10,10 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
-
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
     ],
-
-    // Auth::guard('admin')->check($credentials),
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -36,30 +30,24 @@ return [
     | Supported: "session", "token"
     |
     */
-
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
         ],
-
-        // New guard for admins
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-
         'admin-api' => [
             'driver' => 'token',
             'provider' => 'admins',
         ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -76,24 +64,20 @@ return [
     | Supported: "database", "eloquent"
     |
     */
-
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
         ],
-
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
@@ -108,19 +92,16 @@ return [
     | they have less time to be guessed. You may change this as needed.
     |
     */
-
     'passwords' => [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
         ],
-
         'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',
-            'expire' => 60, // The unit is minute
+            'expire' => 15,
         ],
     ],
-
 ];
